@@ -47,6 +47,7 @@ func (daemon *Daemon) getLibcontainerdCreateOptions(container *container.Contain
 		Runtime: path,
 		RuntimeRoot: filepath.Join(daemon.configStore.ExecRoot,
 			fmt.Sprintf("runtime-%s", container.HostConfig.Runtime)),
+		ExtraRuntimeArgs: container.HostConfig.RuntimeArgs,
 	}
 
 	if UsingSystemd(daemon.configStore) {
